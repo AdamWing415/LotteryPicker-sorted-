@@ -49,8 +49,6 @@ namespace LotteryPicker
                 lotteryArray[5] = numGen.Next(1, MAX);
             }
 
-           
-
             //displays final numbers
             outputLabel.Text = $"{lotteryArray[0]}, {lotteryArray[1]}, {lotteryArray[2]}, {lotteryArray[3]}, {lotteryArray[4]}, {lotteryArray[5]}";
         }
