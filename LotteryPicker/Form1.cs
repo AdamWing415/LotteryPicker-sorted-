@@ -12,7 +12,7 @@ namespace LotteryPicker
 {
     public partial class Form1 : Form
     {
-        //creates the random number generator
+        //creates the random number generator.
         Random numGen = new Random();
 
         //sets max number to 99 (100 - 1)
