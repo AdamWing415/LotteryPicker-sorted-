@@ -24,33 +24,50 @@ namespace LotteryPicker
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //array for all 6 numbers
-            int[] lotteryArray = new int[6];
-            lotteryArray[0] = numGen.Next(1, MAX);
-            lotteryArray[1] = numGen.Next(1, MAX);
-            lotteryArray[2] = numGen.Next(1, MAX);
-            lotteryArray[3] = numGen.Next(1, MAX);
-            lotteryArray[4] = numGen.Next(1, MAX);
-            lotteryArray[5] = numGen.Next(1, MAX);
+            int num1 = numGen.Next(1, MAX);
             
-            //sorts numbers in increasing order to make comparing easier
-            
-            Array.Sort(lotteryArray);
-            
-            //compares all array values
-            while (lotteryArray[0] == lotteryArray[1] || lotteryArray[1] == lotteryArray[2] || lotteryArray[2] == lotteryArray[3] || lotteryArray[3] == lotteryArray[4] || lotteryArray[4] == lotteryArray[5])
+            int num2 = numGen.Next(1, MAX);
+
+            //check num2 for duplicates
+            while (num2 == num1)
             {
-                //if any value is equal to another value, re-randomize
-                lotteryArray[0] = numGen.Next(1, MAX);
-                lotteryArray[1] = numGen.Next(1, MAX);
-                lotteryArray[2] = numGen.Next(1, MAX);
-                lotteryArray[3] = numGen.Next(1, MAX);
-                lotteryArray[4] = numGen.Next(1, MAX);
-                lotteryArray[5] = numGen.Next(1, MAX);
+               num2 = numGen.Next(1, MAX);
             }
 
-            //displays final numbers
-            outputLabel.Text = $"{lotteryArray[0]}, {lotteryArray[1]}, {lotteryArray[2]}, {lotteryArray[3]}, {lotteryArray[4]}, {lotteryArray[5]}";
+            int num3 = numGen.Next(1, MAX);
+
+            //check num3 for duplicates
+            while (num3 == num1 || num3 == num2)
+            {
+               num3 = numGen.Next(1, MAX);
+            }
+
+            int num4 = numGen.Next(1, MAX);
+
+            //check num4 for duplicates
+            while (num4 == num1 || num4 ==  num2 || num4 == num3)
+            {
+                num4 = numGen.Next(1, MAX);
+            }
+
+            int num5 = numGen.Next(1, MAX);
+
+            //check num5 for duplicates
+            while (num5 == num1 || num5 == num2 || num5 == num3 || num5 == num4)
+            {
+                num5 = numGen.Next(1, MAX);
+            }
+
+            int num6 = numGen.Next(1, MAX);
+
+            //check num6 for duplicates
+            while (num6 == num1 || num6 == num2 || num6 == num3 || num6 == num4 || num6 == num5)
+            {
+                num6 = numGen.Next(1, MAX);
+            }
+
+            //outputs final numbers
+            outputLabel.Text = $"{num1}, {num2}, {num3}, {num4}, {num5}, {num6},";
         }
     }
 }
