@@ -22,35 +22,41 @@ namespace LotteryPicker
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void generateButton_Click(object sender, EventArgs e)
         {
-            //array for all 6 numbers
-            int[] lotteryArray = new int[6];
-            lotteryArray[0] = numGen.Next(1, MAX);
-            lotteryArray[1] = numGen.Next(1, MAX);
-            lotteryArray[2] = numGen.Next(1, MAX);
-            lotteryArray[3] = numGen.Next(1, MAX);
-            lotteryArray[4] = numGen.Next(1, MAX);
-            lotteryArray[5] = numGen.Next(1, MAX);
+            outputLabel.ResetText();
+            Refresh();
+
+            int maxNum = 9;
+
+            maxNum = Convert.ToInt32(NumberPicker.SelectedItem);
             
-            //sorts numbers in increasing order to make comparing easier
-            
-            Array.Sort(lotteryArray);
-            
-            //compares all array values
-            while (lotteryArray[0] == lotteryArray[1] || lotteryArray[1] == lotteryArray[2] || lotteryArray[2] == lotteryArray[3] || lotteryArray[3] == lotteryArray[4] || lotteryArray[4] == lotteryArray[5])
+
+            List <int> lotteryList = new List <int>();
+
+
+            lotteryList.Add(numGen.Next(1, MAX));
+
+            for (int i = 1; i < maxNum; i++)
             {
-                //if any value is equal to another value, re-randomize
-                lotteryArray[0] = numGen.Next(1, MAX);
-                lotteryArray[1] = numGen.Next(1, MAX);
-                lotteryArray[2] = numGen.Next(1, MAX);
-                lotteryArray[3] = numGen.Next(1, MAX);
-                lotteryArray[4] = numGen.Next(1, MAX);
-                lotteryArray[5] = numGen.Next(1, MAX);
+                int nextNum = numGen.Next(1, MAX);
+
+                while (lotteryList.Contains(nextNum))
+                {
+                    nextNum = numGen.Next(1, MAX);
+                }
+                lotteryList.Add(nextNum);
             }
 
-            //displays final numbers
-            outputLabel.Text = $"{lotteryArray[0]}, {lotteryArray[1]}, {lotteryArray[2]}, {lotteryArray[3]}, {lotteryArray[4]}, {lotteryArray[5]}";
+
+            lotteryList.Sort();
+
+            for (int i = 0; i < maxNum; i++)
+            {
+                outputLabel.Text += lotteryList[i] + " ";
+            }
         }
+
+        
     }
 }
